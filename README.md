@@ -38,12 +38,12 @@
 - 수동 컨베이어 제어
 - 수동 엑츄에이터 조작
 
-#### AI 모델 개발 과정 (요약)
+#### AI 모델 개발 과정
 
 - Detection: YOLOX-Tiny
 - Segmentation: SegNext-S
 - Classification: EfficientNet-B0
-- Intel Geti에서 학습 후 → ONNX Export
+- Intel Geti에서 학습 후  ONNX Export
 - CUDA 기반 PC에서 실시간 추론
 - 카메라 화이트밸런스·노출·초점 수동 설정으로 데이터 품질 개선
 - Segmentation 결과의 픽셀 비율로 오염도 자동 계산
