@@ -24,6 +24,9 @@
 ## 주요 기능
 
 <img width="1364" height="778" alt="image" src="https://github.com/user-attachments/assets/6b540a2e-67d9-4927-a313-70f6181f2dc2" />
+<img width="1396" height="684" alt="image" src="https://github.com/user-attachments/assets/7226819d-1d75-4470-99a0-d99a6cc50ed3" />
+
+
 
 #### 모델 1 작동
 - Pink 병뚜껑 QC 스티커 유무, 오염 유무
