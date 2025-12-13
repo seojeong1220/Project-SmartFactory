@@ -22,6 +22,9 @@
 - `Tkinter`
 
 ## 주요 기능
+
+<img width="1364" height="778" alt="image" src="https://github.com/user-attachments/assets/6b540a2e-67d9-4927-a313-70f6181f2dc2" />
+
 #### 모델 1 작동
 - Pink 병뚜껑 QC 스티커 유무, 오염 유무
 - No 스티커 or 오염 30% 초과 or Purple 병뚜껑 -> 완전불량
