@@ -44,12 +44,14 @@ Segmentation 결과를 활용하여 stain_px / cap_px × 100 으로 오염률 �
 - 수동 엑츄에이터 조작
 
 #### AI 모델 개발 과정
-| Stage | Model / Tool | Description |
-|------|-------------|-------------|
-| Detection | **YOLOX-Tiny** | 제품 위치 및 QC 스티커 영역 검출 |
-| Segmentation | **SegNext-S** | 오염 영역 픽셀 단위 분할 |
-| Classification | **EfficientNet-B0** | 정상 / 부분 불량 / 완전 불량 분류 |
-| Training | **Intel Geti** | 모델 학습 및 성능 관리 |
-| Export | **ONNX** | OpenVINO·CUDA 환경 추론용 모델 변환 |
-| Inference | **CUDA 기반 PC** | 실시간 추론 파이프라인 구성 |
-| Data Quality | Camera Tuning | 화이트밸런스·노출·초점 수동 설정 |
+<img width="1076" height="557" alt="image" src="https://github.com/user-attachments/assets/5eb74f79-46a2-471a-bfe4-f8d340146d8a" />
+
+   | Stage | Model / Tool | Description |
+   |------|-------------|-------------|
+   | Detection | **YOLOX-Tiny** | 제품 위치 및 QC 스티커 영역 검출 |
+   | Segmentation | **SegNext-S** | 오염 영역 픽셀 단위 분할 |
+   | Classification | **EfficientNet-B0** | 정상 / 부분 불량 / 완전 불량 분류 |
+   | Training | **Intel Geti** | 모델 학습 및 성능 관리 |
+   | Export | **ONNX** | OpenVINO·CUDA 환경 추론용 모델 변환 |
+   | Inference | **CUDA 기반 PC** | 실시간 추론 파이프라인 구성 |
+   | Data Quality | Camera Tuning | 화이트밸런스·노출·초점 수동 설정 |
