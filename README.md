@@ -48,16 +48,3 @@
 - 카메라 화이트밸런스·노출·초점 수동 설정으로 데이터 품질 개선
 - Segmentation 결과의 픽셀 비율로 오염도 자동 계산
 
-## 파일 구조
-```
-team2/
-├─ iotdemo/
-│   ├─ __init__.py
-│   ├─ debounce.py
-│   ├─ factory_controller.py
-│   ├─ pins.py
-│   ├─ pyduino.py
-│   └─ pyft232.py
-├─ MODEL_FILE
-└─ run.py
-```
