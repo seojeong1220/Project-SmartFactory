@@ -25,8 +25,7 @@
 
 <img width="1364" height="778" alt="image" src="https://github.com/user-attachments/assets/6b540a2e-67d9-4927-a313-70f6181f2dc2" />
 <img width="1396" height="684" alt="image" src="https://github.com/user-attachments/assets/7226819d-1d75-4470-99a0-d99a6cc50ed3" />
-
-
+Segmentation 결과를 활용하여 stain_px / cap_px × 100 으로 오염률 계산
 
 #### 모델 1 작동
 - Pink 병뚜껑 QC 스티커 유무, 오염 유무
@@ -45,12 +44,12 @@
 - 수동 엑츄에이터 조작
 
 #### AI 모델 개발 과정
-
-- Detection: YOLOX-Tiny
-- Segmentation: SegNext-S
-- Classification: EfficientNet-B0
-- Intel Geti에서 학습 후  ONNX Export
-- CUDA 기반 PC에서 실시간 추론
-- 카메라 화이트밸런스·노출·초점 수동 설정으로 데이터 품질 개선
-- Segmentation 결과의 픽셀 비율로 오염도 자동 계산
-
+| Stage | Model / Tool | Description |
+|------|-------------|-------------|
+| Detection | **YOLOX-Tiny** | 제품 위치 및 QC 스티커 영역 검출 |
+| Segmentation | **SegNext-S** | 오염 영역 픽셀 단위 분할 |
+| Classification | **EfficientNet-B0** | 정상 / 부분 불량 / 완전 불량 분류 |
+| Training | **Intel Geti** | 모델 학습 및 성능 관리 |
+| Export | **ONNX** | OpenVINO·CUDA 환경 추론용 모델 변환 |
+| Inference | **CUDA 기반 PC** | 실시간 추론 파이프라인 구성 |
+| Data Quality | Camera Tuning | 화이트밸런스·노출·초점 수동 설정 |
