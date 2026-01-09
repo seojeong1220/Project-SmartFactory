@@ -1,46 +1,99 @@
 
 # Intel Geti + AI QC Conveyor
 
-<img width="1260" height="891" alt="Image" src="https://github.com/user-attachments/assets/600a07b7-64cd-4822-b122-ef01c0ea5cd6" />
+<img width="849" height="454" alt="image" src="https://github.com/user-attachments/assets/c85cd102-639c-454f-b1aa-e15400428c58" />
 
-## 프로젝트 소개
-공장 생산라인에서 병뚜껑의 QC 스티커 유무, 오염도 비율을 AI 모델이 자동 분석하고,
-분류 결과에 따라 아두이노 기반 포토센서·액추에이터가 실시간으로 물체를 레일에서 자동 분류하는 스마트 팩토리 모형 시스템입니다.
 
-또한, 버튼 하나로 Pink/Purple 모델을 한 라인에서 구별하는 유연한 생산 자동화 시스템을 구현했습니다.
-<br>
+공장 생산라인에서 병뚜껑의 QC 스티커 유무와 오염도 비율을 AI 모델이 자동 분석하고, 분석 결과에 따라 아두이노 기반 포토센서와 액추에이터가 실시간으로 제품을 자동 분류하는 **End-To-End 스마트 팩토리 시스템**입니다.
+<br> 또한, 버튼 하나로 동일 생산라인에서 분류 기준을 전환할 수 있도록 설계하여, 실제 산업 현장에 적용 가능한 확장형 스마트 팩토리 구조를 구현했습니다.
 
+## 프로젝트 개요
+- **목표**
+  - 병뚜껑 QC 스티커 유무 판별
+  - 오염 영역 Segmentation 기반 정량적 오염률 계산
+  - AI 판단 결과에 따른 실시간 물리 분류 자동화
+
+- **핵심 특징**
+  - Detection + Segmentation + Classification **멀티 모델 파이프라인**
+  - Intel Geti 기반 **산업용 AI 모델 관리**
+  - Arduino + 액추에이터 연동 **완전 자동 분류**
+  - Pink / Purple 모델 **버튼 전환 방식 운영**
+  
 ## 개발 기간
 * 25.09.24 - 25.10.22
 
-### 개발 환경
-- `Intel Geti`
-- `Python 3.12.3`
-- `Arduino Mega`
-- `MariaDB 10`
-- `Tkinter`
+## 개발 환경
+<img width="877" height="419" alt="image" src="https://github.com/user-attachments/assets/f8453c52-d4d0-4e05-a156-402d462bb435" />
+
+| Category | Stack |
+|--------|------|
+| AI Platform | Intel Geti |
+| Language | Python 3.12.3 |
+| Embedded | Arduino Mega |
+| Database | MariaDB 10 |
+| GUI | Tkinter |
+| Model Export | ONNX |
+| Inference | CUDA 기반 PC |
+
+---
 
 ## 주요 기능
 
 <img width="1364" height="778" alt="image" src="https://github.com/user-attachments/assets/6b540a2e-67d9-4927-a313-70f6181f2dc2" />
 <img width="1396" height="684" alt="image" src="https://github.com/user-attachments/assets/7226819d-1d75-4470-99a0-d99a6cc50ed3" />
-**Segmentation 결과를 활용하여 stain_px / cap_px × 100 으로 오염률 계산** 
 
-#### 모델 1 작동
-- Pink 병뚜껑 QC 스티커 유무, 오염 유무
-- No 스티커 or 오염 30% 초과 or Purple 병뚜껑 -> 완전불량
-- 스티커 and 오염 0% 초과 30% 이하 -> 부분불량
-- 스티커 and 오염 0% -> 정상
+### 1. Segmentation 기반 정량적 오염률 계산
+- Segmentation 모델을 활용한 **오염 영역 픽셀 단위 분할**
+- 병뚜껑 전체 대비 오염 비율 계산을 통한 정량적 품질 평가
+- Segmentation 결과를 활용하여 오염률을 계산
 
-#### 모델 2 작동
-- Purple 병뚜껑 QC 스티커 유무, 오염 유무
-- No 스티커 or 오염 30% 초과 or Pink 병뚜껑 -> 완전불량
-- 스티커 and 오염 0% 초과 30% 이하 -> 부분불량
-- 스티커 and 오염 0% -> 정상
+```text
+오염률 (%) = (stain_px / cap_px) × 100
+```
+
+### 2. AI 기반 병뚜껑 자동 QC 판별
+- Intel Geti 기반 AI 모델을 활용한 **실시간 병뚜껑 품질 검사**
+- Pink / Purple 병뚜껑 색상 자동 인식
+- QC 스티커 유무 정확 판별
+
+### 3️. 색상별 QC 기준 분리 모델 운영
+
+#### 🔴 Model 1 : Pink 병뚜껑 기준
+- QC 스티커 유무 및 오염 여부 판별
+
+- **완전불량**
+  - QC 스티커 없음
+  - 오염률 30% 초과
+  - Purple 병뚜껑 감지
+
+- **부분불량**
+  - QC 스티커 존재 + 오염률 0% 초과 ~ 30% 이하
+
+- **정상**
+  - QC 스티커 존재 + 오염률 0%
+
+---
+
+#### 🟣 Model 2 : Purple 병뚜껑 기준
+- QC 스티커 유무 및 오염 여부 판별
+
+- **완전불량**
+  - QC 스티커 없음
+  - 오염률 30% 초과
+  - Pink 병뚜껑 감지
+
+- **부분불량**
+  - QC 스티커 존재 + 오염률 0% 초과 ~ 30% 이하
+
+- **정상**
+  - QC 스티커 존재 + 오염률 0%
+
 
 #### 관리자 모드
 - 수동 컨베이어 제어
 - 수동 엑츄에이터 조작
+  
+---
 
 #### AI 모델 개발 과정
 <img width="1076" height="557" alt="image" src="https://github.com/user-attachments/assets/5eb74f79-46a2-471a-bfe4-f8d340146d8a" />
