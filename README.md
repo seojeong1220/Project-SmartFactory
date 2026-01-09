@@ -1,8 +1,7 @@
-<img width="1260" height="891" alt="Image" src="https://github.com/user-attachments/assets/600a07b7-64cd-4822-b122-ef01c0ea5cd6" />
 
 # Intel Geti + AI QC Conveyor
-인텔 Geti + 인공지능 QC 컨베이어
 
+<img width="1260" height="891" alt="Image" src="https://github.com/user-attachments/assets/600a07b7-64cd-4822-b122-ef01c0ea5cd6" />
 
 ## 프로젝트 소개
 공장 생산라인에서 병뚜껑의 QC 스티커 유무, 오염도 비율을 AI 모델이 자동 분석하고,
@@ -25,7 +24,7 @@
 
 <img width="1364" height="778" alt="image" src="https://github.com/user-attachments/assets/6b540a2e-67d9-4927-a313-70f6181f2dc2" />
 <img width="1396" height="684" alt="image" src="https://github.com/user-attachments/assets/7226819d-1d75-4470-99a0-d99a6cc50ed3" />
-Segmentation 결과를 활용하여 stain_px / cap_px × 100 으로 오염률 계산
+**Segmentation 결과를 활용하여 stain_px / cap_px × 100 으로 오염률 계산** 
 
 #### 모델 1 작동
 - Pink 병뚜껑 QC 스티커 유무, 오염 유무
